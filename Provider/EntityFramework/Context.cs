@@ -12,6 +12,6 @@ namespace Provider.EntityFramework
         public DbSet<Campagne> Campagne { get; set; }
 
         //public Context(DbContextOptions<Context> options) : base(options) { }
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Data Source=MP188072\\OPALE;Initial Catalog=ihmCSharp;Integrated Security=SSPI");
+        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Data Source=.;Initial Catalog=IHM-C-Sharp;Integrated Security=SSPI");
     }
 }
