@@ -43,6 +43,7 @@ namespace WinFormApp
             this.deleteBtn = new System.Windows.Forms.Button();
             this.exportBtn = new System.Windows.Forms.Button();
             this.doublonBtn = new System.Windows.Forms.Button();
+            this.sendMailBtn = new System.Windows.Forms.Button();
 
 
             this.SuspendLayout();
@@ -156,6 +157,15 @@ namespace WinFormApp
             this.doublonBtn.Text = "Supprimer Doublons";
             this.doublonBtn.Click += new System.EventHandler(this.DeleteDuplicate_Click);
             // 
+            // sendMailBtn
+            // 
+            this.sendMailBtn.Location = new System.Drawing.Point(1200, 145);
+            this.sendMailBtn.Name = "sendMailBtn";
+            this.sendMailBtn.Size = new System.Drawing.Size(200, 40);
+            this.sendMailBtn.TabIndex = 12;
+            this.sendMailBtn.Text = "Envoyer Email";
+            this.sendMailBtn.Click += new System.EventHandler(this.SendMail_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -173,6 +183,7 @@ namespace WinFormApp
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.exportBtn);
             this.Controls.Add(this.doublonBtn);
+            this.Controls.Add(this.sendMailBtn);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -194,6 +205,7 @@ namespace WinFormApp
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button exportBtn;
         private System.Windows.Forms.Button doublonBtn;
+        private System.Windows.Forms.Button sendMailBtn;
 
     }
 }

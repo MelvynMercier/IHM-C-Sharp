@@ -67,7 +67,7 @@ namespace WinFormApp
             // 
             // btnAjouterCampagne
             // 
-            this.addCampagneBtn.Location = new System.Drawing.Point(520, 145);
+            this.addCampagneBtn.Location = new System.Drawing.Point(520, 140);
             this.addCampagneBtn.Name = "btnAjouterCampagne";
             this.addCampagneBtn.Size = new System.Drawing.Size(200, 40);
             this.addCampagneBtn.TabIndex = 3;

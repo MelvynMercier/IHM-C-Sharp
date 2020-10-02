@@ -178,5 +178,11 @@ namespace WinFormApp
             //On rafraichit la liste des emails
             this.LoadEmails();
         }
+
+        public async void SendMail_Click(object sender, EventArgs e)
+        {
+            var nextForm = new SendMail(this.currentCampagne);
+            nextForm.Show();
+        }
     }
 }
