@@ -17,6 +17,9 @@ namespace Services
             this.context = context;
         }
 
+        /// <summary>
+        /// Méthode permettant d'ajouter une campagne
+        /// </summary>
         public async Task<Campagne> AddCampagne(Campagne newCampagne)
         {
             if (newCampagne == null)
@@ -28,6 +31,9 @@ namespace Services
             return newCampagne;
         }
 
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des campagnes
+        /// </summary>
         public async Task<List<Campagne>> ListCampagne()
         {
             var campagnes = await context.Campagne.AsQueryable().ToListAsync();
