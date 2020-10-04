@@ -24,8 +24,11 @@ namespace WinFormApp
         /// <summary>
         /// Méthode permettant d'ouvrir la prochaine fenêtre
         /// </summary>
-        private async void nextIHM_Click(object sender, EventArgs e)
+        public void nextIHM_Click(object sender, EventArgs e)
         {
+            //On ferme la fenêtre courrante
+            this.Hide();
+            //On ouvre la prochaine fenêtre
             var nextForm = new Campagne();
             nextForm.Show();
         }

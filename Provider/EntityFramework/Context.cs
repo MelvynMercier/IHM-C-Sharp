@@ -11,7 +11,6 @@ namespace Provider.EntityFramework
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Campagne> Campagne { get; set; }
 
-        //public Context(DbContextOptions<Context> options) : base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Data Source=.;Initial Catalog=IHM-C-Sharp;Integrated Security=SSPI");
     }
 }

@@ -15,6 +15,7 @@ namespace WinFormApp
 {
     public partial class Campagne : Form
     {
+        //Déclaration des variables
         private readonly Context context;
         private readonly CampagneService campagneService;
         public List<Models.Campagne> listCampagne;
@@ -34,7 +35,7 @@ namespace WinFormApp
         /// <summary>
         /// Evenement produit lors du clique sur le bouton "ajouter une campagne"
         /// </summary>
-        private async void AddCampagne_Click(object sender, EventArgs e)
+        public async void AddCampagne_Click(object sender, EventArgs e)
         {
             //Déclaration d"un nouvel objet Campagne, vide
             var newCampagne = new Models.Campagne();
@@ -51,8 +52,10 @@ namespace WinFormApp
         /// <summary>
         /// Evenement produit lors d'un click sur une ligne de la liste des campagnes
         /// </summary>
-        private async void OpenIHMCampagne_Click(object sender, EventArgs e)
+        public void OpenIHMCampagne_Click(object sender, EventArgs e)
         {
+            //On ferme la fenêtre courrante
+            this.Hide();
             //On récupère l'index selectionné
             var index = this.listBoxEmailCampagne.SelectedIndex;
             //On récupère la campagne selon l'index précedemment récupérer

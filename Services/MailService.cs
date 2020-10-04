@@ -19,9 +19,9 @@ namespace Services
         }
 
         /// <summary>
-        /// Méthode permettant d'envoyer un mail à un expediteur
+        /// Méthode permettant d'envoyer un mail
         /// </summary>
-        public async Task SendMail(string smtp, string from, string to, string obj, string msg, string username, string password)
+        public void SendMail(string smtp, string from, string to, string obj, string msg, string username, string password)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Services
                 mail.Body = msg;
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
+                SmtpServer.Credentials = new System.Net.NetworkCredential(username, password);
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);

@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SendMail.cs">
       <SubType>Form</SubType>
     </Compile>

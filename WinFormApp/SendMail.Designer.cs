@@ -131,6 +131,8 @@ namespace WinFormApp
             this.allCheckBox.Name = "allCheckBox";
             this.allCheckBox.Size = new System.Drawing.Size(200, 40);
             this.allCheckBox.TabIndex = 3;
+            this.allCheckBox.Click += new System.EventHandler(this.Checkbox_Click);
+
             // 
             // Form1
             // 

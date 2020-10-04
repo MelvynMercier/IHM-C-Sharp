@@ -39,9 +39,7 @@ namespace Services
         /// </summary>
         public async Task<List<Contact>> ContactListByCampagne(int campagneId)
         {
-            var contact = context.Contact.AsQueryable();
-            var contacts = await contact.Where(c => c.CampagneId == campagneId).ToListAsync();
-            return contacts;
+            return (await context.Contact.Where(c => c.CampagneId == campagneId).ToListAsync());
         }
 
         /// <summary>

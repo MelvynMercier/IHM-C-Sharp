@@ -17,10 +17,11 @@ namespace WinFormApp
 {
     public partial class CampagneDetails : Form
     {
+        //Déclaration des variables
         private readonly Context context;
         private readonly ContactService contactService;
-
         public Models.Campagne currentCampagne;
+        public List<Models.Contact> contacts;
 
         public CampagneDetails(Models.Campagne campagneSelected)
         {
@@ -46,7 +47,7 @@ namespace WinFormApp
             //On vide la liste des emails de la listBox "listEmailBox"
             this.listEmailBox.Items.Clear();
             //On réupère les contacts de la campagne en passant l'id de la campagne en paramètre
-            var contacts = await this.contactService.ContactListByCampagne(this.currentCampagne.Id);
+            this.contacts = await this.contactService.ContactListByCampagne(this.currentCampagne.Id);
             //On boucle sur la liste des contacts précédemment récupéré
             contacts.ForEach(c =>
             {
@@ -148,15 +149,21 @@ namespace WinFormApp
             this.LoadEmails();
         }
 
+        /// <summary>
+        /// Méthode permettant d'exporter les mails au format txt
+        /// </summary>
         public async void ExportEmails_Click(object sender, EventArgs e)
         {
+            //On récupère tous les contacts de la campagne courante
             var contacts = await this.contactService.ContactListByCampagne(this.currentCampagne.Id);
-            
+            //On prépare une variable afin de pouvoir enregistre l'emplacement du futur fichier
             var sfd = new SaveFileDialog();
+            //On ouvre la boite de dialog
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                //On récupère le nom que l'utilisateur a choisi pour son fichier avec l'url
                 var location = sfd.FileName;
-
+                //On export le fichier
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(location + ".txt", true))
                 {
                     contacts.ForEach(c =>
@@ -179,10 +186,22 @@ namespace WinFormApp
             this.LoadEmails();
         }
 
-        public async void SendMail_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Méthode appelé lorsqu'on clique sur le bouton "envoyer email"
+        /// </summary>
+        public void SendMail_Click(object sender, EventArgs e)
         {
+            //On récupère si un email a était sélectionné
+            var index = this.listEmailBox.SelectedIndex;
+            //On défini la fenêtre par defaut qui sera ouverte
             var nextForm = new SendMail(this.currentCampagne);
+            //Si un email est selectionner alors on appel un autre constructeur afin d'ouvrir la prochaine fenêtre
+            if (index != -1)
+                nextForm = new SendMail(this.currentCampagne, this.contacts[index].Email);
+            //On ouvre la prochaine fenêtre
             nextForm.Show();
+            //On ferme la fenêtre courrante
+            this.Hide();
         }
     }
 }
